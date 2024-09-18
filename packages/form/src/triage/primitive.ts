@@ -189,7 +189,7 @@ export const fieldPrimitive = (
 		if (typeof uiOptions?.['ui:widget'] === 'string') {
 			const customWidgetName = uiOptions?.['ui:widget'];
 			if (customWidgetName !== 'password') {
-				return widgets?.[customWidgetName]?.(options) || missing('custom');
+				return widgets?.[customWidgetName]?.(options) || missing(customWidgetName);
 			}
 		}
 
