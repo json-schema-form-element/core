@@ -352,14 +352,12 @@ export class Jsf extends LitElement {
 
 	/* When user hit "Enter" while in some adequate inputs */
 	protected _handleKeydown(event: KeyboardEvent) {
-		console.log('cccccccccccccc');
 		const hasModifier =
 			event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
 
 		if (event.key === 'Enter' && !hasModifier) {
 			setTimeout(() => {
 				if (!event.defaultPrevented && !event.isComposing) {
-					console.log({ event });
 					const form = this.#formRef.value!;
 					// const valid = form.reportValidity();
 					let valid = true;
@@ -398,7 +396,7 @@ export class Jsf extends LitElement {
 	#submit = () => {
 		const options: Widgets['submit'] = {
 			id: '__submit_button',
-			label: this.submitButtonLabel,
+			label: this.submitButtonText,
 		};
 		const error = 'Missing submit widget.';
 		return (
@@ -421,7 +419,6 @@ export class Jsf extends LitElement {
 				${ref(this.#formRef)}
 				part="base"
 				@submit=${(event: Event) => {
-					console.log('hey');
 					event.preventDefault();
 
 					const valid = (event.target as HTMLFormElement).reportValidity();
