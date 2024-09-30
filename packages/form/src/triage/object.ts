@@ -17,6 +17,13 @@ export const fieldObject = (
 	if (typeof schema.properties !== 'object')
 		return widgets.callout?.({ id: '', message: error }) ?? html`${error}`;
 
+	const id = path.join('.');
+
+	function missing(widgetName: string) {
+		const options = { id, message: `Missing ${widgetName} widget.` };
+		return widgets?.callout?.(options) ?? html`<p>${options.message}</p>`;
+	}
+
 	const children = Object.entries(schema.properties).map(
 		([propName, propValue]) => {
 			if (Array.isArray(propValue) || typeof propValue === 'boolean')
@@ -59,12 +66,17 @@ export const fieldObject = (
 	if (typeof uiSchema?.['ui:title'] === 'string') label = uiSchema['ui:title'];
 
 	const options = {
-		id: path.join('.'),
+		id,
 		label,
 		helpText: schema.description,
 		children,
 		level,
 	};
+
+	if (typeof uiSchema?.['ui:widget'] === 'string') {
+		const customWidgetName = uiSchema?.['ui:widget'];
+		return widgets?.[customWidgetName]?.(options) || missing(customWidgetName);
+	}
 
 	return (
 		widgets?.object?.(options) ??
