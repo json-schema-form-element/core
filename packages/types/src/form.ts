@@ -16,8 +16,8 @@ export interface FeatureFlags {
 	additionalProperties?: boolean;
 }
 
-export type DataChangeCallback = (
-	newData: unknown,
+export type DataChangeCallback<TData> = (
+	newData: TData,
 	path: Path,
 	value: unknown,
 	schemaPath: Path,

@@ -10,7 +10,7 @@ export const fieldArrayPrimitive = (
 	uiState: unknown,
 	uiOptions: UiSchema,
 	required: boolean,
-	handleChange: Jsf['_handleChange'],
+	handleChange: Jsf<unknown>['_handleChange'],
 	// dig: Jsf['_dig'],
 	schemaPath: Path,
 	widgets: Widgets,

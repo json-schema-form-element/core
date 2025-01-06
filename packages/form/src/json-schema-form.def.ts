@@ -4,6 +4,6 @@ customElements.define('json-schema-form', Jsf);
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'json-schema-form': Jsf;
+		'json-schema-form': Jsf<unknown>;
 	}
 }

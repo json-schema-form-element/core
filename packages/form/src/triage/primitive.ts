@@ -14,8 +14,8 @@ export const fieldPrimitive = (
 	path: Path,
 	uiOptions: UiSchema,
 	required: boolean,
-	handleChange: Jsf['_handleChange'],
-	handleKeydown: Jsf['_handleKeydown'],
+	handleChange: Jsf<unknown>['_handleChange'],
+	handleKeydown: Jsf<unknown>['_handleKeydown'],
 	schemaPath: Path,
 
 	widgets: Widgets,
