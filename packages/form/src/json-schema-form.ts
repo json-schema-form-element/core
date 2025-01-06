@@ -33,16 +33,17 @@ import type {
 	JSONSchema7,
 } from '@jsfe/types';
 
-export class Jsf extends LitElement {
+export class Jsf<TData> extends LitElement {
 	@property({ type: Object }) public schema: JSONSchema7 = {};
 
-	@property({ type: Object }) public data: unknown = {};
+	// @ts-expect-error TData might not extend {}, but we can't fix until the next breaking change
+	@property({ type: Object }) public data: TData = {};
 
 	@property({ type: Object }) public uiSchema: UiSchema = {};
 
 	public submitCallback: OnFormSubmit = () => {};
 
-	public dataChangeCallback: DataChangeCallback = () => {};
+	public dataChangeCallback: DataChangeCallback<TData> = () => {};
 
 	@property({ type: Object }) public widgets: Widgets = {};
 

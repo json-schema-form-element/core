@@ -8,7 +8,7 @@ export const fieldObject = (
 	path: Path,
 	uiState: unknown,
 	uiSchema: UiSchema,
-	dig: Jsf['_dig'],
+	dig: Jsf<unknown>['_dig'],
 	schemaPath: Path,
 	widgets: Widgets,
 	level = 0,
